@@ -1,18 +1,32 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, BaseRequestOptions, Http } from '@angular/http';
+import { RouterModule } from '@angular/router';
+import { RestangularModule, RestangularHttp, Restangular } from 'ng2-restangular';
+
+import { routes } from './app.routes';
 
 import { AppComponent } from './app.component';
+import { PostsComponent } from './posts/posts.component';
+import { UsersComponent } from './users/users.component';
+
+export function configFunc (RestangularProvider, http) {
+  RestangularProvider.setBaseUrl('https://jsonplaceholder.typicode.com/');
+}
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PostsComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot(routes),
+    RestangularModule.forRoot([Http], configFunc)
   ],
   providers: [],
   bootstrap: [AppComponent]

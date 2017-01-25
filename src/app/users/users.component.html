@@ -1,0 +1,10 @@
+<div class=row>
+    <div class="col-sm-6 col-sm-offset-3">
+        <ul class="list-group">
+            <li *ngFor="let user of users" class="list-group-item">
+                <p>User name: {{ user.name }}</p>
+                <p>User email: {{ user.email }}</p>
+            </li>
+        </ul>
+    </div>
+</div>

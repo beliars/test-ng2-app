@@ -1,3 +1,10 @@
-<h1>
-  {{title}}
-</h1>
+<div class="container">
+  <div class="wrapper">
+      <h1>{{ title }}</h1>
+      <div class="btn-group button-head" role="group" aria-label="...">
+          <a  class="btn btn-default" [routerLink]="['/posts']">Posts</a>
+          <a  class="btn btn-default" [routerLink]="['/users']">Users</a>
+      </div>
+  </div>
+  <router-outlet></router-outlet>
+</div>
