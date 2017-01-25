@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Restangular } from 'ng2-restangular';
 import 'rxjs/Rx';
 
+import { RestService } from '../../services/rest.service';
+
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
@@ -12,14 +14,13 @@ export class PostsComponent implements OnInit {
   private posts;
   private subscribers;
 
-  constructor(public restangular: Restangular) {
+  constructor(private restangular: Restangular, private restService: RestService) {
     this.posts = restangular.all("posts");
   }
 
   ngOnInit() {
-    this.subscribers = this.posts.getList().subscribe(posts => {
+    this.subscribers = this.restService.getPostsList().subscribe(posts => {
       this.posts = posts;
-      console.log(this.posts);
     });
   }
 

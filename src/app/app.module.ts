@@ -7,9 +7,10 @@ import { RestangularModule, RestangularHttp, Restangular } from 'ng2-restangular
 
 import { routes } from './app.routes';
 
-import { AppComponent } from './app.component';
-import { PostsComponent } from './posts/posts.component';
-import { UsersComponent } from './users/users.component';
+import { AppComponent } from './components/app.component';
+import { PostsComponent } from './components/posts/posts.component';
+import { UsersComponent } from './components/users/users.component';
+import { RestService } from './services/rest.service';
 
 export function configFunc (RestangularProvider, http) {
   RestangularProvider.setBaseUrl('https://jsonplaceholder.typicode.com/');
@@ -28,7 +29,7 @@ export function configFunc (RestangularProvider, http) {
     RouterModule.forRoot(routes),
     RestangularModule.forRoot([Http], configFunc)
   ],
-  providers: [],
+  providers: [RestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
